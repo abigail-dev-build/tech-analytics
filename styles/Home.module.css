@@ -114,16 +114,15 @@
     text-align: center;
   }
 
-.gradientCircle {
+/* .gradientCircle {
   position: absolute;
   top: 0;
   right: 0;
   width: 200px;
   height: 200px; 
   background: linear-gradient(to bottom right, #f23232, rgba(0,0,255,0));
-  /* clip-path: polygon(100% 0, 0 0, 100% 100%); */
   clip-path: circle(180px at 100% 0);
-}
+} */
 }
 
 @media (min-width: 701px) and (max-width: 1120px){
