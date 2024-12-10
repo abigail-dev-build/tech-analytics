@@ -2,9 +2,9 @@ import Image from "next/image";
 import Logo from "../../public/Logo.svg";
 import NavMenu from "./menu";
 
-const Navbar = () => {
+const Navbar = ({ bgColor }) => {
   return (
-    <div class="flex flex-row pt-10 px-20 justify-between bg-offwhite">
+    <div className={`flex flex-row pt-10 px-20 justify-between ${bgColor}`}>
       <div class="w-2/12">
         <Image priority src={Logo} alt="Logo" />
       </div>

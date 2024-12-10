@@ -50,6 +50,9 @@ module.exports = {
       },
       fontSize: {
         bold: '40px',
+      },
+      margin: {
+        33: '140px',
       }
     },
   },

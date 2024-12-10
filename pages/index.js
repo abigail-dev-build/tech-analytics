@@ -44,7 +44,7 @@ export default function Home() {
 
   // in the next.config file, recheck ways to optimize images
   return (
-    <Layout>
+    <Layout bgColor="bg-offwhite">
       <HeadTag title="Home" />
       {/* section 1 */}
       <div class="grid grid-cols-2 px-20 py-14 ">
