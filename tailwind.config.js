@@ -48,6 +48,9 @@ module.exports = {
        128:'1028px',
     
       },
+      fontSize: {
+        bold: '40px',
+      }
     },
   },
   
