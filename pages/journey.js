@@ -4,6 +4,7 @@ import Image from "next/image";
 import Journey1 from "../public/pictures/journey_image_1.png";
 import Journey2 from "../public/pictures/journey_image_2.png";
 import SideArrow from "../public/side_arrow_down.svg";
+import PrimaryButton from "../components/button";
 
 const JourneyTwo = () => {
   return (
@@ -82,9 +83,7 @@ const JourneyTwo = () => {
         </h3>
 
         <div class="w-37 mx-auto mt-6 mb-20">
-          <button class="bg-blue text-white w-37 h-10.5 py-2.5 px-5 text-base font-medium">
-            Contact us
-          </button>
+          <PrimaryButton>Contact us</PrimaryButton>
         </div>
       </div>
     </Layout>

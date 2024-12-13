@@ -18,6 +18,7 @@ import LoadingIcon from "../public/loading.svg";
 import CustomerSatisfaction from "../public/pictures/customer_satisfaction.png";
 import Tick from "../public/Tick.svg";
 import Network from "../public/pictures/network.png";
+import PrimaryButton from "../components/button";
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -62,9 +63,7 @@ export default function Home() {
             maximising your budget.
           </p>
           <div class="flex gap-4 mt-8">
-            <button class="w-37 h-10.5 bg-blue text-white py-2.5 border-transparent outline-none">
-              Book a session
-            </button>
+            <PrimaryButton>Book a session</PrimaryButton>
             <button class="w-37 h-10.5 bg-white text-blue py-2.5 border border-solid border-lightblue">
               About us
             </button>

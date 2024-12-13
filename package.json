@@ -14,7 +14,9 @@
     "eslint-config-next": "15.0.4",
     "next": "15.0.4",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "react-hook-form": "^7.54.1",
+    "react-phone-number-input": "^3.4.10"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
