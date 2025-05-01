@@ -22,7 +22,6 @@ const NavMenu = () => {
                 isCurrentPage ? "text-blue" : "text-dark"
               } hover:text-blue font-hanken flex flex-row md:flex-col text-lg font-medium pb-3`}
             >
-              {/* className=" text-dark flex flex-row flex-col pb-3" */}
               {label}
             </span>
             {icon && (

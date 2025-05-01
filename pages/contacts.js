@@ -34,7 +34,7 @@ const Contacts = () => {
           <h4 className="font-crimson font-bold text-grey text-center text-xl lg:text-4xl">
             Get in touch with our team
           </h4>
-          <p className="font-hanken font-normal text-sm  text-grey text-center mt-2 lg:font-medium text-lg">
+          <p className="font-hanken font-normal text-sm  text-grey text-center mt-2 lg:font-medium lg:text-lg">
             Contact us using the information below. We will respond promptly to
             your inquiry and feedback
           </p>

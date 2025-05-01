@@ -64,60 +64,9 @@ const Academy = () => {
           </PrimaryButton>
         </div>
       </div>
-
-      {/* section 2 */}
-      <div className="mt-14 ">
-        <h4 className="font-crimson text-dark font-semibold text-2xl text-center lg:text-3xl">
-          Our Commitment to Cloud Excellence
-        </h4>
-        <p className="font-hanken text-grey font-medium text-sm text-center mx-8 lg:text-lg">
-          From startups to enterprises, we help organizations achieve
-          unprecedented <br className="hidden lg:block" />
-          performance, security, and cost optimization through intelligent cloud
-          architecture.
-        </p>
-        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-3 pt-10 mx-12 lg:mx-40">
-          <div className="w-85 h-81 bg-white py-5 px-4">
-            <div className="flex justify-center items-center my-4">
-              <Image priority src={CloudSVG} alt="cloud services" />
-            </div>
-            <h6 className="font-crimson font-semibold text-dark text-xl">
-              Multi-Cloud Architecture
-            </h6>
-            <p className="font-hanken font-normal text-grey text-lg pt-2">
-              Deploy and manage workloads across leading platforms, ensuring
-              optimal performance and redundancy
-            </p>
-          </div>
-          <div className="w-85 h-81 bg-white py-5 px-4">
-            <div className="flex justify-center items-center my-4">
-              <Image priority src={InfrastructureSVG} alt="infrastructure" />
-            </div>
-            <h6 className="font-crimson font-semibold text-dark text-xl">
-              Infrastructure optimisation
-            </h6>
-            <p className="font-hanken font-normal text-grey text-lg pt-2">
-              Design, migrate, and optimize your cloud infrastructure across
-              major platforms, reducing costs by up to 40%
-            </p>
-          </div>
-          <div className="w-85 h-81 bg-white py-5 px-4">
-            <div className="flex justify-center items-center my-4">
-              <Image priority src={TrainingSVG} alt="training" />
-            </div>
-            <h6 className="font-crimson font-semibold text-dark text-xl">
-              Cloud Computing Training
-            </h6>
-            <p className="font-hanken font-normal text-grey text-lg pt-2">
-              From fundamentals to advanced architecture, gain hands-on
-              expertise in today&apos;s leading cloud platforms
-            </p>
-          </div>
-        </div>
-      </div>
       {/* section 3 */}
       <div className="bg-sky h-[539px] my-10 grid grid-cols-1 md:grid-cols-2">
-        <div className="mx-8 pt-8 content-center lg:pt-0 mx-20">
+        <div className="mx-8 pt-8 content-center lg:pt-0 lg:mx-20">
           <h3 className="font-crimson font-semibold text-dark text-2xl mb-5 lg:text-4xl font-bold">
             Join our Community of Learners
           </h3>

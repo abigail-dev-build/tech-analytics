@@ -98,7 +98,7 @@ const Journey = () => {
         </h3>
 
         <div className="w-37 mx-auto mt-6 mb-20">
-          <PrimaryButton>Contact us</PrimaryButton>
+          <PrimaryButton><a href="mailto:info@nestanalytics.org">Contact us</a></PrimaryButton>
         </div>
       </div>
     </Layout>
