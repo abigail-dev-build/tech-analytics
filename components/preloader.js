@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import HeadTag from "./headTag";
 
@@ -54,7 +55,7 @@ const Preloader = ({ finishLoading }) => {
           transition={{ duration: 1, ease: "easeInOut" }}
         >
         <div className="flex flex-col items-center">
-          <img src="/Logo.svg" alt="Logo" className="w-[300px] h-[300px]" />
+          <Image src="/Logo.svg" alt="Logo" className="w-[300px] h-[300px]" />
           {/* <img src="/loaderText.svg" alt="Logo text" className="mt-4" /> */}
             </div>
         </motion.div>
