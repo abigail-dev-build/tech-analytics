@@ -79,7 +79,7 @@ const Academy = () => {
           </p>
           <div className="flex justify-center mt-4">
             <PrimaryButton type="button" width="w-55">
-              Register Today
+            <a href="https://chat.whatsapp.com/KE9LeGyLM4t2gxsTGdXNfK"> Register Today</a>
             </PrimaryButton>
           </div>
         </div>
@@ -160,7 +160,7 @@ const Academy = () => {
 
             <div className="flex justify-center mt-5">
               <PrimaryButton type="button" width="w-55">
-                Join our community
+              <a href="https://chat.whatsapp.com/KE9LeGyLM4t2gxsTGdXNfK">Join our community</a>
               </PrimaryButton>
             </div>
           </div>

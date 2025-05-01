@@ -1,3 +1,4 @@
+import { useRef, createRef, useState, useEffect } from "react";
 import Image from "next/image";
 import HeadTag from "../components/headTag";
 import Layout from "../components/layout";
@@ -15,6 +16,22 @@ import Testimonials from "../components/testimonials";
 import PrimaryButton from "../components/button";
 
 const Services = () => {
+  const ref = useRef(null);
+
+  const [showModel, setShowModel] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+
+    if (showModel) {
+      ref.current.showModal();
+    } else {
+      ref.current.close();
+    }
+  }, [showModel]);
+
   return (
     <Layout bgColor="bg-offwhite">
       <HeadTag title="Services" />
@@ -45,7 +62,7 @@ const Services = () => {
           <br /> performance, security, and cost optimization through
           intelligent cloud architecture.
         </p>
-        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-3 pt-10 mx-12 lg:mx-40">
+        <div className="grid grid-cols-1 gap-y-4 lg:grid-cols-3 pt-10 mx-12 lg:mx-40">
           <div className="w-85 h-81 bg-white py-5 px-4">
             <div className="flex justify-center items-center my-4">
               <Image priority src={CloudSVG} alt="cloud services" />
@@ -99,10 +116,41 @@ const Services = () => {
             </p>
 
             <div className="flex justify-center mt-5">
-              <PrimaryButton type="button">
-                Book a call<span></span>
+              <PrimaryButton
+                type="button"
+                onClick={() => setShowModel((prev) => !prev)}
+              >
+                Book a Call
               </PrimaryButton>
             </div>
+            {showModel && (
+              <dialog
+                ref={ref}
+                onClick={(e) => {
+                  if (!ref.current) return;
+
+                  const dialogDimensions = ref.current.getBoundingClientRect();
+                  if (
+                    e.clientX < dialogDimensions.left ||
+                    e.clientX > dialogDimensions.right ||
+                    e.clientY < dialogDimensions.top ||
+                    e.clientY > dialogDimensions.bottom
+                  ) {
+                    ref.current.close();
+                    setShowModel(false);
+                  }
+                }}
+                className="h-full w-full md:w-1/2 rounded-lg shadow-md"
+              >
+                <iframe
+                  src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ06qvIqkDB_bwuETtmdWaaHiWNXXJwjW63ATtssjEUbaC6pagVf-Rpftfn9DQ7Ev2ZbPhMwvfRb?gv=true"
+                  // style="border: 0"
+                  width="100%"
+                  height="600"
+                  frameborder="0"
+                ></iframe>
+              </dialog>
+            )}
           </div>
           <div className="hidden lg:grid grid-cols-1 justify-self-end pt-5">
             <Image src={CloudService} alt="Microsoft azure" />

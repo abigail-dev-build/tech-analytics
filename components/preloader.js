@@ -55,8 +55,7 @@ const Preloader = ({ finishLoading }) => {
           transition={{ duration: 1, ease: "easeInOut" }}
         >
         <div className="flex flex-col items-center">
-          <Image src="/Logo.svg" alt="Logo" className="w-[300px] h-[300px]" />
-          {/* <img src="/loaderText.svg" alt="Logo text" className="mt-4" /> */}
+          <Image src="/Logo.svg" alt="Logo" width={300} height={300} />
             </div>
         </motion.div>
 

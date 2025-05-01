@@ -4,7 +4,6 @@ import Layout from "../components/layout";
 import HomeIcon from "../public/Home-circle.svg";
 import CloudServices from "../public/cloud-services.svg";
 import Consulting from "../public/technical-consulting.svg";
-// import Development from "../public/web-development.svg";/
 import Development from "../public/academy-icon.svg";
 import Previous from "../public/PreviousButton.svg";
 import NextButton from "../public/NextButton.svg";
@@ -110,7 +109,7 @@ export default function Home() {
           We bring expertise that matches your business needs with the right
           solutions.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 pt-10 mx-12 lg:mx-40">
+        <div className="grid grid-cols-1 lg:grid-cols-3 pt-10 mx-12 lg:mx-40">
           <div className="w-85 min-h-81 bg-white py-5 px-4 mb-2 md:mb-0">
             <h6 className="font-crimson font-semibold text-dark text-xl">
               Cloud services
@@ -228,7 +227,7 @@ export default function Home() {
                 </div>
               ))}
 
-              <button className=" m-auto w-55 h-10.5 bg-blue text-white py-2.5 border-transparent outline-none">
+              <button className=" m-auto w-55 h-10.5 bg-blue text-white py-2.5 border-transparent outline-none"  onClick={() => router.push("/services")}>
                 Get started with us
               </button>
             </div>
@@ -252,7 +251,7 @@ export default function Home() {
             </p>
             <div className="w-37 mx-auto mt-20">
               <button className="w-37 h-10.5 bg-white text-blue py-2.5 border border-solid border-lightblue">
-                <a href="https://t.me/boost?c=2312428518">Join our network</a>
+                <a href="https://chat.whatsapp.com/KE9LeGyLM4t2gxsTGdXNfK">Join our network</a>
               </button>
             </div>
           </div>
