@@ -3,9 +3,9 @@ import Footer from "./footer";
 
 const Layout = ({ children, bgColor }) => {
   return (
-    <div class="flex flex-col h-screen justify-between">
+    <div className="flex flex-col h-screen justify-between">
       <Navbar bgColor={bgColor} />
-      <div class="bg-offwhite">{children}</div>
+      <main className="flex-grow bg-offwhite pt-20">{children}</main>
       <Footer />
 </div>
 

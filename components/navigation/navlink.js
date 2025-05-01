@@ -1,18 +1,18 @@
-import Arrow from '../../public/arrow_drop_down.svg';
+// import Arrow from '../../public/arrow_drop_down.svg';
 const navItems = [
     {
-      label: 'Home',
-      url: '/',
+      label: 'About Us',
+      url: '/about',
       icon: null,
     },
     {
-      label: 'What we do',
-      url: '/whatwedo',
-      icon: Arrow,
+      label: 'Services',
+      url: '/services',
+      icon: null,
     },
     {
-      label: 'Our journey',
-      url: '/journey',
+      label: 'Academy',
+      url: '/academy',
       icon: null,
     },
     {

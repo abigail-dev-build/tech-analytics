@@ -9,7 +9,7 @@ import TextInput from "../components/input";
 import PrimaryButton from "../components/button";
 import PhoneInput, { getCountryCallingCode } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler } from "react-hook-form";
 
 const Contacts = () => {
   const [value, setValue] = useState();
@@ -19,30 +19,29 @@ const Contacts = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
   const onSubmit = (data) => {
     const combinedData = { ...data, phonenumber: value };
     console.log(combinedData);
   };
 
-  const services = ["Cloud Services", "Technical Consultation", "WordPress Solution", "Web Development", "Other Services"];
   return (
     <Layout bgColor="bg-offwhite">
-      <HeadTag title="Home" />
-      <div class="py-14">
-        <div class="">
-          <h4 class="font-bold text-blue text-center text-4xl">Contact Us</h4>
-          <h4 class="font-bold text-grey text-center text-4xl mt-4">
+      <HeadTag title="Contacts" />
+      <div className="px-8 py-12">
+        <div className="">
+          <h4 className="font-crimson font-bold text-grey text-center text-xl lg:text-4xl">
             Get in touch with our team
           </h4>
-          <p class="font-medium text-grey text-center text-lg mt-2">
+          <p className="font-hanken font-normal text-sm  text-grey text-center mt-2 lg:font-medium text-lg">
             Contact us using the information below. We will respond promptly to
             your inquiry and feedback
           </p>
         </div>
 
-        <div class="mt-20 mx-28 ">
+        <div className="mt-5 mx-0 lg:mt-20 mx-28 ">
+        {/* aspect-video md:aspect-square */}
           <video autoPlay={true} muted loop id="background-video">
             <source src="pictures/contact_video.mp4" type="video/mp4"></source>
             <track
@@ -53,51 +52,51 @@ const Contacts = () => {
               default
             ></track>
           </video>
-          <div class="mt-10 mx-20 flex justify-between">
-            <div class="">
-              <div class="mb-12">
-                <div class="flex gap-4 justify-center">
+          <div className="mt-10 mx-0 flex flex-col lg:flex-row justify-between lg:mx-20">
+            <div className="">
+              <div className="mb-12">
+                <div className="flex gap-4 justify-center">
                   <Image src={SupportIcon} alt="support icon" />
-                  <h4 class="text-dark text-4xl font-bold">Support</h4>
+                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">Support</h4>
                 </div>
-                <p class="text-grey text-base font-medium text-center mt-2">
+                <p className="font-hanken text-grey text-base font-medium text-center mt-2">
                   Our friendly team is here to help
                 </p>
-                <p class="text-darkgreen text-base font-medium text-center mt-2">
-                  support@techanalytics24/7.com
+                <p className="font-hanken text-blue text-base font-medium text-center mt-2">
+                  info@nestanalytics.org
                 </p>
               </div>
 
-              <div class="mb-12">
-                <div class="flex gap-4 justify-center">
+              <div className="mb-12">
+                <div className="flex gap-4 justify-center">
                   <Image src={ChatIcon} alt="chat icon" />
-                  <h4 class="text-dark text-4xl font-bold">Chat</h4>
+                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">Chat</h4>
                 </div>
-                <p class="text-grey text-base font-medium text-center mt-2">
+                <p className="font-hanken text-grey text-base font-medium text-center mt-2">
                   Questions or Queries?
                 </p>
-                <p class="text-darkgreen text-base font-medium text-center mt-2">
-                  support@techanalytics24/7.com
+                <p className="font-hanken text-blue text-base font-medium text-center mt-2">
+                info@nestanalytics.org
                 </p>
               </div>
 
-              <div class="mb-12">
-                <div class="flex gap-4 justify-center">
+              <div className="mb-12">
+                <div className="flex gap-4 justify-center">
                   <Image src={PhoneIcon} alt="phone icon" />
-                  <h4 class="text-dark text-4xl font-bold">Phone</h4>
+                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">Phone</h4>
                 </div>
-                <p class="text-grey text-base font-medium text-center mt-2">
+                <p className="font-hanken text-grey text-base font-medium text-center mt-2">
                   Mon-Fri open from 8am-5pm
                 </p>
-                <p class="text-darkgreen text-base font-medium text-center mt-2">
+                <p className="font-hanken text-blue text-base font-medium text-center mt-2">
                   +234 8123 456 7890
                 </p>
               </div>
             </div>
 
-            <div class="w-[654px] bg-sky rounded-lg">
+            <div className="w-full bg-sky rounded-lg lg:w-[654px]">
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="pt-4 px-10">
+                <div className="pt-4 px-4 lg:px-10">
                   <TextInput
                     label="First Name"
                     type="text"
@@ -120,60 +119,46 @@ const Contacts = () => {
                     {...register("email")}
                   />
 
-                  <div class="mb-4">
+                  <div className="mb-4 w-full">
                     <PhoneInput
-                      placeholder="023xxxxxxxxxxxx"
+                      placeholder="023xxxxxxxx"
                       defaultCountry="GB"
                       value={value}
                       onChange={setValue}
-                      className="custom-phone-input"
-                      countrySelectProps={{
-                        className: 'border border-gray-300 rounded-md p-2',
-                        children: (country) => `+${getCountryCallingCode(country)} (${country})`,
+                      classNameName="custom-phone-input"
+                      style={{
+                        '--PhoneInputCountryIcon-display': 'none',
+                        '--PhoneInput-color--focus': 'lightblue',
+                        '--PhoneInputCountryFlag-width': '100px',
                       }}
-                      
+                      countrySelectProps={{
+                        classNameName: "rounded-md p-2 bg-lightblue",
+                        
+                        children: (country) =>
+                          `+${getCountryCallingCode(country)} (${country})`,
+                      }}
                     />
                   </div>
 
-                  <div class="mb-4">
-                    <label class="text-grey text-xl font-medium" for="phone">
+                  <div className="mb-4">
+                    <label className="text-grey text-xl font-medium" for="message">
                       Message
                     </label>
                     <br />
-                    <textarea class="w-full h-[240px] bg-sky outline-0 p-2 border border-gray rounded-lg" {...register("message")}/>
+                    <textarea
+                      className="w-full h-[240px] bg-sky outline-0 p-2 border border-gray rounded-lg"
+                      {...register("message")}
+                    />
                     <p
                       id="message-error"
-                      class="hidden text-red-500 text-sm mt-1"
+                      className="hidden text-red-500 text-sm mt-1"
                     >
                       Please enter a valid message
                     </p>
                   </div>
 
-                  <div class="mb-4">
-                    <p class="text-grey text-xl font-medium" for="phone">
-                      Services
-                    </p>
-                    <div class="grid grid-cols-2">
-                    {services.map((index) => {
-                      return (
-                      <div class="flex gap-4 mb-2" key={index}>
-                      <input type="radio" name="service" value={index} {...register("service")}/>
-                      <label for={index}>{index}</label>
-                      </div>
-                      )
-
-                    })}
-
-                    </div>
-                    <p
-                      id="message-error"
-                      class="hidden text-red-500 text-sm mt-1"
-                    >
-                      Please enter a valid message
-                    </p>
-                    </div>
                 </div>
-                <div class="w-37 mx-auto mb-10">
+                <div className="w-37 mx-auto mb-10">
                   <PrimaryButton type="submit">Send a Message</PrimaryButton>
                 </div>
               </form>

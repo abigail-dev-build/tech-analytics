@@ -4,7 +4,8 @@ import Layout from "../components/layout";
 import HomeIcon from "../public/Home-circle.svg";
 import CloudServices from "../public/cloud-services.svg";
 import Consulting from "../public/technical-consulting.svg";
-import Development from "../public/web-development.svg";
+// import Development from "../public/web-development.svg";/
+import Development from "../public/academy-icon.svg";
 import Previous from "../public/PreviousButton.svg";
 import NextButton from "../public/NextButton.svg";
 import { testimonials } from "../components/helpers";
@@ -12,28 +13,29 @@ import Testimonials from "../components/testimonials";
 import HeadTag from "../components/headTag";
 import StockQuote from "../public/StockQuotes.svg";
 import SquareStar from "../public/SquareStar.svg";
-import HumanIcon from "../public/human_icon.svg";
-import MoneyIcon from "../public/money_icon.svg";
-import LoadingIcon from "../public/loading.svg";
-import CustomerSatisfaction from "../public/pictures/customer_satisfaction.png";
 import Tick from "../public/Tick.svg";
 import Network from "../public/pictures/network.png";
 import PrimaryButton from "../components/button";
+import { Typewriter } from "react-simple-typewriter";
+import { useRouter } from "next/navigation";
+import { content, cardContent } from "../components/arrays";
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeColumn, setActiveColumn] = useState(0);
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prev) => (prev + 1) % testimonials?.length);
-  //   }, 3000);
-  //   return () => clearInterval(interval); // Cleanup interval
-  // }, [testimonials?.length]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => ((prev + 1) % testimonials?.length) / 2);
+    }, 3000);
+    return () => clearInterval(interval); // Cleanup interval
+  }, [testimonials?.length]);
 
   const handleNext = (e) => {
     // The array is rendered in twos per slide, factor this in when clicking next and the useEffect sliding
     e.preventDefault();
-    if (currentIndex < testimonials?.length - 1) {
+    if (currentIndex < testimonials?.length / 2 - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -48,181 +50,209 @@ export default function Home() {
     <Layout bgColor="bg-offwhite">
       <HeadTag title="Home" />
       {/* section 1 */}
-      <div class="grid grid-cols-2 px-20 py-14 ">
-        <div class="mt-20">
-          <h1 class="text-5xl font-bold">
-            Scale your vision with {""}{" "}
-            <span class="bg-gradient-to-r from-blue from-20% via-red via-60% to-green inline-block text-transparent bg-clip-text">
-              optimised infrastructure plan
+      <div className="flex flex-col md:flex-row justify-center px-5 py-14 lg:px-20">
+        <div className="w-full md:w-1/2 mt-20 order-last md:order-first">
+          <h1 className="font-crimson text-5xl font-bold">
+            Empower your growth with
+            <br />
+            <span className="bg-gradient-to-r from-blue from-20% via-red via-60% to-green inline-block text-transparent bg-clip-text">
+              <Typewriter
+                words={[
+                  "Streamlined Cloud Infrastructure",
+                  // "optimised infrastructure plan",
+                  // "ideas that bring growth for you",
+                ]}
+                loop={false}
+                cursor
+                cursorStyle="|"
+                typeSpeed={100}
+                deleteSpeed={100}
+                delaySpeed={1500}
+              />
             </span>
           </h1>
 
-          <p class="text-xl font-medium text-grey pt-10">
-            Let&apos;s work to optimise that complex infrastructure with our
-            resourceful expertise in cloud management across various platforms
-            maximising your budget.
+          <p className="font-hanken text-xl font-medium text-grey pt-10">
+            Unlock the power of simplicity in infrastructure management. At Nest
+            Analytics, we transform complex systems into efficient,
+            cost-effective solutions that drive your business forward.
           </p>
-          <div class="flex gap-4 mt-8">
-            <PrimaryButton>Book a session</PrimaryButton>
-            <button class="w-37 h-10.5 bg-white text-blue py-2.5 border border-solid border-lightblue">
+          <div className="flex gap-4 mt-8">
+            <PrimaryButton type="button">
+              <a href="mailto:info@nestanalytics.org">Book a session</a>
+            </PrimaryButton>
+            <button
+              type="button"
+              onClick={() => router.push("/about")}
+              className="w-37 h-10.5 bg-white text-blue py-2.5 border border-solid border-lightblue"
+            >
               About us
             </button>
           </div>
         </div>
-
-        <div class="pl-24">
-          <Image priority src={HomeIcon} alt="rotating image" />
+        <div className=" w-full md:w-1/2 order-first md:order-last lg:pl-24">
+          <Image
+            priority
+            src={HomeIcon}
+            alt="rotating image"
+            width={501}
+            height={559}
+          />
         </div>
       </div>
 
       {/* section 2 */}
-      <div class="mt-14">
-        <h5 class="text-dark font-semibold text-2xl text-center">
+      <div className="mt-14">
+        <h5 className="font-crimson text-dark font-semibold text-2xl text-center">
           We are experts in leading cloud platforms
         </h5>
-        <p class="text-grey font-medium text-lg text-center">
+        <p className="font-hanken text-grey font-medium text-lg text-center mx-4">
           We bring expertise that matches your business needs with the right
           solutions.
         </p>
-        <div class="grid grid-cols-3 pt-10 mx-40">
-          <div class="w-85 h-81 bg-white py-5 px-4">
-            <h6 class="font-semibold text-dark text-xl">Cloud services</h6>
-            <p class="font-normal text-grey text-lg pt-2">
-              Expert cloud management and infrastructure solutions that are cost
-              optimised.
+        <div className="grid grid-cols-1 md:grid-cols-3 pt-10 mx-12 lg:mx-40">
+          <div className="w-85 min-h-81 bg-white py-5 px-4 mb-2 md:mb-0">
+            <h6 className="font-crimson font-semibold text-dark text-xl">
+              Cloud services
+            </h6>
+            <p className="font-hanken font-normal text-grey text-lg pt-2">
+              Efficiently manage your cloud environment with cost-optimized
+              solutions tailored for growth.
             </p>
-            <div class="flex justify-center items-center mt-2">
+            <div className="flex justify-center items-center mt-2">
               <Image priority src={CloudServices} alt="cloud services" />
             </div>
           </div>
-          <div class="w-85 h-81 bg-white py-5 px-4">
-            <h6 class="font-semibold text-dark text-xl">
-              Technical Consulting
+          <div className="w-85 min-h-81 bg-white py-5 px-4 mb-2 md:mb-0">
+            <h6 className="font-crimson font-semibold text-dark text-xl">
+              Infrastructure Management
             </h6>
-            <p class="font-normal text-grey text-lg pt-2">
-              Strategic guidance to navigate your digital transformation and
-              build with confidence.
+            <p className="font-hanken font-normal text-grey text-lg pt-2">
+              Navigate digital transformation with strategic,
+              confidence-building management for your IT infrastructure.
             </p>
-            <div class="flex justify-center items-center mt-2">
+            <div className="flex justify-center items-center mt-2">
               <Image priority src={Consulting} alt="technical consulting" />
             </div>
           </div>
-          <div class="w-85 h-81 bg-white py-5 px-4">
-            <h6 class="font-semibold text-dark text-xl">Web Development</h6>
-            <p class="font-normal text-grey text-lg pt-2">
-              Custom-built, scalable applications that turn your vision into
-              powerful digital experiences
+          <div className="w-85 min-h-81 bg-white py-5 px-4 mb-2 md:mb-0">
+            <h6 className="font-crimson font-semibold text-dark text-xl">
+              Academy
+            </h6>
+            <p className="font-hanken font-normal text-grey text-lg pt-2">
+              Elevate your skills with hands-on training for aspiring Azure
+              specialists in admin, engineering, and DevOps.
             </p>
-            <div class="flex justify-center items-center mt-2">
+            <div className="flex justify-center items-center mt-2">
               <Image priority src={Development} alt="web development" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* section 3 */}
-      <div class="h-128 bg-sky mt-10">
-        <div class="pt-4 pl-20">
-          <h4 class="text-4xl font-bold">
+      {/* section 3 blocked*/}
+      {/* <div className="h-128 bg-sky mt-10">
+        <div className="pt-4 pl-20">
+          <h4 className="text-4xl font-bold">
             Don&apos;t just take our word for it.
-            <br /> See what <span class="text-blue">our clients</span> says{" "}
+            <br /> See what <span className="text-blue">our clients</span> says{" "}
           </h4>
         </div>
 
-        <div class="flex justify-end mr-20 gap-10">
-          <button class="" onClick={handlePrevious}>
+        <div className="flex justify-end mr-20 gap-10">
+          <button onClick={handlePrevious}>
             <Image src={Previous} alt="previous" />
           </button>
-          <button class="" onClick={handleNext}>
+          <button onClick={handleNext}>
             <Image src={NextButton} alt="next" />
           </button>
         </div>
 
         <Testimonials currentIndex={currentIndex} />
-        <div class="flex justify-between px-5 mt-32">
+        <div className="flex justify-between px-5 mt-32">
           <Image priority src={StockQuote} alt="stock quote" />
           <Image priority src={SquareStar} alt="square star" />
         </div>
-      </div>
+      </div> */}
 
       {/* section 4 */}
-      <div class="mt-16 px-40">
-        <h5 class="font-semibold text-dark text-2xl text-center">
-          Why work with Tech Analytics?
+      <div className="mt-16 lg:px-40">
+        <h5 className="font-crimson font-semibold text-dark text-2xl text-center">
+          Why work with Nest Analytics?
         </h5>
-        <p class="font-medium text-grey text-lg text-center">
-          Turning the tides of challenges into bright, seamless opportunity is
-          what we do
+        <p className="font-hanken font-medium mx-4 text-grey text-lg text-center">
+          We transform challenges into opportunities by putting you at the
+          center of our strategy.
         </p>
-        <div class=" grid grid-cols-3 gap-4 my-14">
-          <div class="w-85 min-h-21 rounded-lg px-5 py-2.5 bg-[#E9F2FA] flex justify-between gap-3">
-            <Image src={HumanIcon} alt="human icon" />
-            <p class="font-semibold text-sm text-dark mt-2">
-              We are YOU focused. Our goal is to help you reach your goals
-            </p>
-          </div>
-          <div class="w-85 min-h-21 rounded-lg px-5 py-2.5 bg-gray flex justify-between gap-3">
-            <Image src={MoneyIcon} alt="money icon" />
-            <p class="font-semibold text-sm text-dark mt-2">
-              Cost optimisation with quality job retained
-            </p>
-          </div>
-          <div class="w-85 min-h-21 rounded-lg px-5 py-2.5 bg-gray flex justify-between gap-3">
-            <Image src={LoadingIcon} alt="loading icon" />
-            <p class="font-semibold text-sm text-dark mt-2">
-              From infrastructure to scalability, one team handles your needs
-            </p>
+
+        <div className="my-14 ml-4">
+          <div
+            className="flex overflow-x-auto gap-4 snap-x snap-mandatory scroll-smooth scrollbar-hide 
+               lg:grid lg:grid-cols-3 lg:overflow-visible"
+          >
+            {cardContent.map((items, index) => {
+              const { text, icon } = items;
+              const isLast = index === cardContent.length - 1;
+              return (
+                <div
+                  key={text}
+                  className={`w-[85vw] min-w-[85vw] min-h-21 rounded-lg px-5 py-2.5 flex-shrink-0 snap-center 
+                    bg-[#E9F2FA] flex justify-between gap-3 transition-all duration-300
+                    ${activeColumn === index ? "bg-sky" : "bg-gray"} 
+                    ${isLast ? "mr-4" : ""}
+                    lg:w-auto lg:min-w-0 lg:snap-none lg:mr-0`}
+                  onClick={() => setActiveColumn(index)}
+                >
+                  <Image src={icon} alt={`${text} icon`} />
+                  <p className="font-hanken font-semibold text-sm text-dark mt-2">
+                    {text}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-20">
-          <div class="">
-            <p class="font-medium text-xl text-dark">
-              Because your success is the only metric that matters to us. That
-              is why we work with your business objectives while building
-              solutions around your workflow that brings growth.
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+          <div className="">
+            <p className="font-hanken font-medium  mx-8 text-xl text-dark lg:mx-0">
+              {content[activeColumn]?.paragraph}
             </p>
-            <div class="grid grid-rows-4 gap-4 w-80 mt-10 mx-auto">
-              <div class="flex gap-3">
-                <Image class="" src={Tick} alt="tick icon" />
-                <p class="text-grey text-xl font-normal pt-4">
-                  Regular strategy reviews
-                </p>
-              </div>
-              <div class="flex gap-3">
-                <Image class="" src={Tick} alt="tick icon" />
-                <p class="text-grey text-xl font-normal pt-4">
-                  Proactive optimisation
-                </p>
-              </div>
-              <div class="flex gap-3">
-                <Image class="" src={Tick} alt="tick icon" />
-                <p class="text-grey text-xl font-normal pt-4">
-                  24/7 expert support
-                </p>
-              </div>
+            <div className="grid grid-rows-4 gap-4 w-80 mt-10 mx-auto order-last md:order-first">
+              {content[activeColumn]?.list.map((item, index) => (
+                <div className="flex gap-3" key={index}>
+                  <Image className="" src={Tick} alt="tick icon" />
+                  <p className="font-hanken text-grey text-xl font-normal pt-4">
+                    {item}
+                  </p>
+                </div>
+              ))}
 
-              <button class=" m-auto w-55 h-10.5 bg-blue text-white py-2.5 border-transparent outline-none">
+              <button className=" m-auto w-55 h-10.5 bg-blue text-white py-2.5 border-transparent outline-none">
                 Get started with us
               </button>
             </div>
           </div>
-          <Image src={CustomerSatisfaction} alt="customer satisfaction" />
+          <Image
+            className="px-8 order-first md:order-last lg:px-0"
+            src={content[activeColumn]?.image}
+            alt={`Image for ${content[activeColumn]?.image}`}
+          />
         </div>
 
-        <div class="grid grid-cols-2 gap-16 my-16">
-          <Image class="" src={Network} alt="networking" />
-          <div class="w-99 mt-20">
-            <h4 class="text-dark text-3xl font-bold text-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 my-16">
+          <Image className="" src={Network} alt="networking" />
+          <div className="mt-20">
+            <h4 className="font-crimson text-dark text-3xl font-bold text-center">
               Be part of a network that nurtures
             </h4>
-            <p class="text-grey text-lg font-normal mt-3 mx-10">
+            <p className="font-hanken text-grey text-lg font-normal mt-3 mx-10">
               Join our community of educators, experts, and tech enthusiasts,
               where we learn, share, and grow.
             </p>
-            <div class="w-37 mx-auto mt-20">
-              <button class="w-37 h-10.5 bg-white text-blue py-2.5 border border-solid border-lightblue">
-                Join our network
+            <div className="w-37 mx-auto mt-20">
+              <button className="w-37 h-10.5 bg-white text-blue py-2.5 border border-solid border-lightblue">
+                <a href="https://t.me/boost?c=2312428518">Join our network</a>
               </button>
             </div>
           </div>

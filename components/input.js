@@ -1,7 +1,7 @@
 const TextInput = (({type, label, id, placeholder, name, value, onChange, marginBottom, ErrorMessage, errorId, ref}) => {
     return (
         <div className={`${marginBottom}`}>
-        <label class="text-grey text-xl font-medium" for={name}>
+        <label className="font-hanken text-grey text-base font-medium lg:text-xl" for={name}>
             {label}
         </label>
         <br />
@@ -13,11 +13,11 @@ const TextInput = (({type, label, id, placeholder, name, value, onChange, margin
             placeholder={placeholder}
             onChange={onChange}
             ref={ref}
-            class="w-full text-grey text-base font-normal bg-sky border-b border-gray outline-0 p-2"
+            className="w-full text-grey text-base font-normal bg-sky border-b border-gray outline-0 p-2"
         />
         <p
             id={errorId}
-            class="hidden text-red text-sm mt-1"
+            className="hidden text-red text-sm mt-1"
         >
             {ErrorMessage}
             {/* {errors.exampleRequired && <span>This field is required</span>} */}

@@ -9,7 +9,7 @@ const Testimonials = ({currentIndex}) => {
   return (
     <div class=" relative overflow-hidden mx-7 mt-5 mb-10">
     <div
-      class="flex gap-8 transition-transform duration-500 ease-in-out"
+      class="flex justify-between gap-8 transition-transform duration-500 ease-in-out"
       style={{ transform: `translateX(-${currentIndex * 100}%)` }}
     >
       {testimonials?.map((items) => {
@@ -38,7 +38,7 @@ const Testimonials = ({currentIndex}) => {
               </div>
               <div class="w-45 h-11.5 border border-solid border-lightgray rounded-xl px-2.5 py-2 flex justify-between">
                 <Image src={logo} alt="testimonial company logo" />
-                <p class="text-dark text-base font-semibold text-center">
+                <p class="text-dark text-base font-semibold text-center truncate ...">
                   {companyName}
                 </p>
               </div>
@@ -53,7 +53,7 @@ const Testimonials = ({currentIndex}) => {
               <div class="pt-2">
                 <Image src={Line} alt="line" />
               </div>
-              <div class="">
+              <div>
                 <p class="font-semibold text-lg">{name}</p>
                 <p class="font-mediun text-base">{position}</p>
                 <p class="font-medium text-base">{companyName}</p>

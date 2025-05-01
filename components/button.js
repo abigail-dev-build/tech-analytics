@@ -1,8 +1,8 @@
 
 
-const PrimaryButton = ({children, type}) => {
+const PrimaryButton = ({width = "w-37", children, type, onClick}) => {
     return (
-        <button class="w-37 h-10.5 bg-blue text-white py-2.5 border-transparent outline-none" type={type}>{children}</button>
+        <button className={`h-10.5 bg-blue text-white py-2.5 border-transparent outline-none font-hanken ${width}`} onClick={onClick} type={type}>{children}</button>
     )
   };
 

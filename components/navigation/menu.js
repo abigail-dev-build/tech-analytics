@@ -3,40 +3,41 @@ import navItems from "./navlink";
 import Link from "next/link";
 import Image from "next/image";
 import { checkUrl } from "../helpers";
+import blueArrow from "../../public/blue-arrow.svg";
 
 const NavMenu = () => {
-    const router = useRouter(); // Get the current router object
-    const { pathname } = router; // Get the current pathname
+  const router = useRouter();
+  const { pathname } = router;
 
-    return (
-        <>
-            {navItems.map((item) => {
-                const { label, url, icon } = item;
-                const isCurrentPage = checkUrl(pathname, url); // Check if the current path matches the item's URL
+  return (
+    <div className="space-y-4 md:space-y-0 md:flex md:items-center md:space-x-8">
+      {navItems.map((item) => {
+        const { label, url, icon } = item;
+        const isCurrentPage = checkUrl(pathname, url);
 
-                return (
-                    <div key={label} className="mb-2">
-                        <Link href={url} className="flex items-center space-x-2">
-                            <span
-                                className={`${
-                                    isCurrentPage ? "text-blue" : "text-dark"
-                                }`}
-                            >
-                                {label}
-                            </span>
-                            {icon && (
-                                <Image
-                                    src={icon}
-                                    alt={`${label} dropdown icon`}
-                                    className="w-4 h-4"
-                                />
-                            )}
-                        </Link>
-                    </div>
-                );
-            })}
-        </>
-    );
+        return (
+          <Link key={label} href={url} className="group">
+            <span 
+              className={`${
+                isCurrentPage ? "text-blue" : "text-dark"
+              } hover:text-blue font-hanken flex flex-row md:flex-col text-lg font-medium pb-3`}
+            >
+              {/* className=" text-dark flex flex-row flex-col pb-3" */}
+              {label}
+            </span>
+            {icon && (
+              <Image
+                src={isCurrentPage ? blueArrow : icon}
+                alt={`${label} dropdown icon`}
+                width={16}
+                height={16}
+              />
+            )}
+          </Link>
+        );
+      })}
+    </div>
+  );
 };
 
 export default NavMenu;
