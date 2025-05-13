@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 import { Hanken_Grotesk, Crimson_Text } from 'next/font/google';
 import { useState, useEffect } from "react";
-// App Router (e.g. layout.tsx or layout.jsx)
 import Preloader from '../components/preloader';
 
 const hankenGrotesk = Hanken_Grotesk({

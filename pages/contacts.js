@@ -7,7 +7,8 @@ import ChatIcon from "../public/chat-icon.svg";
 import PhoneIcon from "../public/phone-icon.svg";
 import TextInput from "../components/input";
 import PrimaryButton from "../components/button";
-import PhoneInput, { getCountryCallingCode } from "react-phone-number-input";
+import PhoneInput, { getCountries, getCountryCallingCode } from "react-phone-number-input";
+import en from 'react-phone-number-input/locale/en.json';
 import "react-phone-number-input/style.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -120,7 +121,7 @@ const Contacts = () => {
                   />
 
                   <div className="mb-4 w-full">
-                    <PhoneInput
+                    {/* <PhoneInput
                       placeholder="023xxxxxxxx"
                       defaultCountry="GB"
                       value={value}
@@ -137,7 +138,35 @@ const Contacts = () => {
                         children: (country) =>
                           `+${getCountryCallingCode(country)} (${country})`,
                       }}
-                    />
+                      {getCountries().map((country) => (
+                        <option key={country} value={country}>
+                          {labels[country]} +{getCountryCallingCode(country)}
+                        </option>
+                      ))}
+                    /> */}
+
+<PhoneInput
+  placeholder="023xxxxxxxx"
+  defaultCountry="GB"
+  value={value}
+  onChange={setValue}
+  labels={en}
+  className="custom-phone-input"
+  style={{
+    '--PhoneInputCountryIcon-display': 'none',
+    '--PhoneInput-color--focus': 'lightblue',
+  }}
+  // countrySelectProps={{
+  //   getOptionLabel: (country) =>
+  //     `${en[country]} (+${getCountryCallingCode(country)})`, // shown in dropdown
+  // }}
+  countrySelectProps={{
+    getOptionLabel: (country) => ` ${country}`, // shows "UK" instead of full name
+    className: 'custom-country-select', // custom styling
+  }}
+
+/>
+
                   </div>
 
                   <div className="mb-4">

@@ -23,18 +23,26 @@ p{
   border-bottom: 1px solid #E2E2E3;
   outline: none;
   padding: 8px;
+}/* CSS or Tailwind-style override */
+.custom-phone-input .PhoneInputCountryIcon {
+  display: none;
 }
 
-.custom-phone-input .PhoneInputCountryIcon {
-  /* background-size: contain; */
-  /* display: inline-block; */
-  /* background-color: #B9D6F0; */
-  /* width: 100px; */
-  /* height: 50px; */
-  /* padding: 7px 9px; */
-  /* outline: none; */
-  /* border: none; */
+.custom-country-select {
+  background-color: #bdd9f5; /* light blue */
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='black' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
 }
+
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

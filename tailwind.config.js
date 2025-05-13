@@ -62,11 +62,7 @@ module.exports = {
     },
   },
 
-  // variants: {
-  //   extend: {
-  //     backgroundClip: ['text'],
-  //   },
-  // },
+
 
   plugins: [require('tailwind-scrollbar-hide')],
 
