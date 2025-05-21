@@ -8,13 +8,6 @@ body {
   padding: 0;
   margin: 0; 
 }
-h1,h2,h3,h4,h5,h6{
-  /* font-family: "Crimson Text"; */
-}
-
-p{
-  /* font-family: "Hanken Grotesk"; */
-}
 .custom-phone-input input{
   background-color: #E9F2FA;
   color: #525252;
@@ -23,13 +16,10 @@ p{
   border-bottom: 1px solid #E2E2E3;
   outline: none;
   padding: 8px;
-}/* CSS or Tailwind-style override */
-.custom-phone-input .PhoneInputCountryIcon {
-  display: none;
 }
 
 .custom-country-select {
-  background-color: #bdd9f5; /* light blue */
+  background-color: #525252;
   border: none;
   border-radius: 12px;
   padding: 0.5rem 1rem;

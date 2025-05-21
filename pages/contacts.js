@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Layout from "../components/layout";
 import HeadTag from "../components/headTag";
 import Image from "next/image";
@@ -7,24 +7,35 @@ import ChatIcon from "../public/chat-icon.svg";
 import PhoneIcon from "../public/phone-icon.svg";
 import TextInput from "../components/input";
 import PrimaryButton from "../components/button";
-import PhoneInput, { getCountries, getCountryCallingCode } from "react-phone-number-input";
-import en from 'react-phone-number-input/locale/en.json';
+import PhoneInput, { getCountryCallingCode } from "react-phone-number-input";
+import en from "react-phone-number-input/locale/en.json";
 import "react-phone-number-input/style.css";
-import { useForm, SubmitHandler } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import toast, { Toaster } from "react-hot-toast";
 
 const Contacts = () => {
+  const form = useRef();
   const [value, setValue] = useState();
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
+  const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
+  const PUBLIC_KEY = process.env.NEXT_PUBLIC_PUBLIC_KEY;
 
-  const onSubmit = (data) => {
-    const combinedData = { ...data, phonenumber: value };
-    console.log(combinedData);
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
+        publicKey: PUBLIC_KEY,
+      })
+      .then(
+        () => {
+          toast.success("Form submitted successfully");
+        },
+        (error) => {
+          toast.error("This is an error!", error.text);
+        }
+      );
   };
 
   return (
@@ -42,13 +53,13 @@ const Contacts = () => {
         </div>
 
         <div className="mt-5 mx-0 lg:mt-20 mx-28 ">
-        {/* aspect-video md:aspect-square */}
+          {/* aspect-video md:aspect-square */}
           <video autoPlay={true} muted loop id="background-video">
             <source src="pictures/contact_video.mp4" type="video/mp4"></source>
             <track
               src="fgsubtitles_en.vtt"
               kind="subtitles"
-              srclang="en"
+              srcLang="en"
               label="English"
               default
             ></track>
@@ -58,7 +69,9 @@ const Contacts = () => {
               <div className="mb-12">
                 <div className="flex gap-4 justify-center">
                   <Image src={SupportIcon} alt="support icon" />
-                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">Support</h4>
+                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">
+                    Support
+                  </h4>
                 </div>
                 <p className="font-hanken text-grey text-base font-medium text-center mt-2">
                   Our friendly team is here to help
@@ -71,20 +84,24 @@ const Contacts = () => {
               <div className="mb-12">
                 <div className="flex gap-4 justify-center">
                   <Image src={ChatIcon} alt="chat icon" />
-                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">Chat</h4>
+                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">
+                    Chat
+                  </h4>
                 </div>
                 <p className="font-hanken text-grey text-base font-medium text-center mt-2">
                   Questions or Queries?
                 </p>
                 <p className="font-hanken text-blue text-base font-medium text-center mt-2">
-                info@nestanalytics.org
+                  info@nestanalytics.org
                 </p>
               </div>
 
               <div className="mb-12">
                 <div className="flex gap-4 justify-center">
                   <Image src={PhoneIcon} alt="phone icon" />
-                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">Phone</h4>
+                  <h4 className="font-crimson text-dark text-xl font-semibold lg:text-4xl font-bold">
+                    Phone
+                  </h4>
                 </div>
                 <p className="font-hanken text-grey text-base font-medium text-center mt-2">
                   Mon-Fri open from 8am-5pm
@@ -96,87 +113,60 @@ const Contacts = () => {
             </div>
 
             <div className="w-full bg-sky rounded-lg lg:w-[654px]">
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <Toaster position="top-center" reverseOrder={false} />
+              <form ref={form} onSubmit={sendEmail}>
                 <div className="pt-4 px-4 lg:px-10">
                   <TextInput
-                    label="First Name"
+                    label="Full Name"
                     type="text"
                     id="fname"
+                    name="name"
                     placeholder="John Matthew"
                     marginBottom="mb-4"
                     ErrorMessage="Enter a valid input"
                     errorId="first-name"
-                    {...register("firstname")}
                   />
 
                   <TextInput
                     label="Email Address"
                     type="email"
                     id="email"
+                    name="email"
                     placeholder="johndoe@gmail.com"
                     marginBottom="mb-4"
                     ErrorMessage="Enter a valid input"
                     errorId="email-address"
-                    {...register("email")}
                   />
 
                   <div className="mb-4 w-full">
-                    {/* <PhoneInput
+                    <PhoneInput
                       placeholder="023xxxxxxxx"
                       defaultCountry="GB"
+                      // international
+                      name="phone_number"
+                      withCountryCallingCode
                       value={value}
                       onChange={setValue}
-                      classNameName="custom-phone-input"
-                      style={{
-                        '--PhoneInputCountryIcon-display': 'none',
-                        '--PhoneInput-color--focus': 'lightblue',
-                        '--PhoneInputCountryFlag-width': '100px',
-                      }}
+                      labels={en}
+                      className="custom-phone-input"
                       countrySelectProps={{
-                        classNameName: "rounded-md p-2 bg-lightblue",
-                        
-                        children: (country) =>
-                          `+${getCountryCallingCode(country)} (${country})`,
+                        getOptionLabel: (country) =>
+                          `${en[country]} (+${getCountryCallingCode(country)})`, // shown in dropdown
                       }}
-                      {getCountries().map((country) => (
-                        <option key={country} value={country}>
-                          {labels[country]} +{getCountryCallingCode(country)}
-                        </option>
-                      ))}
-                    /> */}
-
-<PhoneInput
-  placeholder="023xxxxxxxx"
-  defaultCountry="GB"
-  value={value}
-  onChange={setValue}
-  labels={en}
-  className="custom-phone-input"
-  style={{
-    '--PhoneInputCountryIcon-display': 'none',
-    '--PhoneInput-color--focus': 'lightblue',
-  }}
-  // countrySelectProps={{
-  //   getOptionLabel: (country) =>
-  //     `${en[country]} (+${getCountryCallingCode(country)})`, // shown in dropdown
-  // }}
-  countrySelectProps={{
-    getOptionLabel: (country) => ` ${country}`, // shows "UK" instead of full name
-    className: 'custom-country-select', // custom styling
-  }}
-
-/>
-
+                    />
                   </div>
 
                   <div className="mb-4">
-                    <label className="text-grey text-xl font-medium" for="message">
+                    <label
+                      className="text-grey text-xl font-medium"
+                      htmlFor="message"
+                    >
                       Message
                     </label>
                     <br />
                     <textarea
+                      name="message"
                       className="w-full h-[240px] bg-sky outline-0 p-2 border border-gray rounded-lg"
-                      {...register("message")}
                     />
                     <p
                       id="message-error"
@@ -185,7 +175,6 @@ const Contacts = () => {
                       Please enter a valid message
                     </p>
                   </div>
-
                 </div>
                 <div className="w-37 mx-auto mb-10">
                   <PrimaryButton type="submit">Send a Message</PrimaryButton>

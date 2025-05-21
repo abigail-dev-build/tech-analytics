@@ -1,31 +1,21 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Logo from "../../public/Logo.svg";
 import NavMenu from "./menu";
 import PrimaryButton from "../button";
-import Preloader from "../preloader";
 import HamburgerIcon from "../../public/hamburger.svg";
 import CloseIcon from "../../public/cancel-icon.svg";
 
 const Navbar = ({ bgColor }) => {
-  const [showPreloader, setShowPreloader] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isRedirecting = useRef(false);
   const router = useRouter();
 
   const handleLogoClick = () => {
-    if (!isRedirecting.current) {
-      isRedirecting.current = true;
-      setShowPreloader(true);
       router.push("/"); // Next.js client-side navigation
-    }
   };
 
   return (
-    <>
-      {showPreloader && <Preloader />}
-
       <div className={`fixed top-0 left-0 w-full z-50 bg-offwhite ${bgColor}`}>
         <div className="flex flex-row justify-between px-6 md:px-20 py-6 md:py-10">
           {/* Logo */}
@@ -89,7 +79,6 @@ const Navbar = ({ bgColor }) => {
           </div>
         )}
       </div>
-    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import { Hanken_Grotesk, Crimson_Text } from 'next/font/google';
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import Preloader from '../components/preloader';
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -14,14 +15,24 @@ const crimsonText = Crimson_Text({
   variable: '--font-crimson-text',
 });
 
+
 export default function App({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const router = useRouter();
+
 
   useEffect(() => {
-    // Set loading to false after the preloader animation
-    const timer = setTimeout(() => setIsLoading(false), 4000);
-    return () => clearTimeout(timer);
-  }, []);
+    // Only show preloader on first load of the index page
+    if (router.pathname === '/' || isFirstLoad) {
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        setIsFirstLoad(false); // Mark first load as complete
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [router.pathname, isFirstLoad]);
 
   if (isLoading) {
     return <Preloader finishLoading={() => setIsLoading(false)} />;
