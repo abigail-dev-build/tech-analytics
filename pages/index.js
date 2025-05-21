@@ -29,7 +29,7 @@ export default function Home() {
       setCurrentIndex((prev) => ((prev + 1) % testimonials?.length) / 2);
     }, 3000);
     return () => clearInterval(interval); // Cleanup interval
-  }, [testimonials?.length]);
+  }, []);
 
   const handleNext = (e) => {
     // The array is rendered in twos per slide, factor this in when clicking next and the useEffect sliding
