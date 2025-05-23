@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nest Analytics Website
 
-## Getting Started
+A simple NextJs application displaying the services of Nest Analytics. The application is designed to be responsive and is styled using tailwind css.
 
-First, run the development server:
 
-```bash
+## Tech Stack
+
+- NextJs
+- Tailwind css
+
+## External Dependencies
+
+- **react-phone-number-input:** Used for getting international dial code 
+- **emailjs:** Used for sending email from html form.
+- **react-simple-typewriter:** Used for typewriting effect.
+- **framer-motion:** Used for animation.
+
+
+## How to Run
+
+1. Clone the repository: `git clone https://github.com/abigail-dev-build/tech-analytics.git`
+2. Navigate to the project folder: `cd tech`
+3. Install dependencies: 
+
+```bash 
+npm install
+# or
+yarn install
+#or
+pnpm install
+#or
+bun install
+```
+4. First, run the development server:
+
+```bash 
 npm run dev
 # or
 yarn dev
+#or
+pnpm dev
+#or
+bun dev
 ```
+5. Open your browser and visit `http://localhost:3000/`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Submission
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [GitHub Repository](https://github.com/abigail-dev-build/tech-analytics)
+- [Live Demo](https://www.nestanalytics.org)
